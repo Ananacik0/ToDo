@@ -10,10 +10,24 @@
         <div class="container">
                 <div class="title">
                         <h1>ToDo-JavaScript</h1>
-                        <form action="" class="title__form">
-                                <input type="text" class="title__line">
-                                <input type="submit" class="title__button" value="Добавить">
-                        </form>
+                        <div class="title__input">
+                                <input type="text" value="" placeholder="Введи задачу..." class="title__input--line">
+                                <input type="submit" class="title__input--button" value="Добавить">
+                        </div>
+                </div>
+                <div class="task">
+                        <input type="checkbox" class="task__checkout">
+                        <input type="text" class="task__title" value="">
+                        <div class="task__btn">
+                                <button class="task__btn--done">
+                                        Готово
+                                </button>
+                                <button class="task__btn--todo">
+                                        В процессе
+                                </button>
+                        </div>
+                </div>
+                <div class="taskList">
                 </div>
         </div>
         <script src="scripts/script.js"></script>
