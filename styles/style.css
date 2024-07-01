@@ -94,7 +94,7 @@ body {
 
 .taskList {
         padding-top: 10vh;
-        display: none;
+
 
         .task {
                 display: flex;
