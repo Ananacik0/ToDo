@@ -32,7 +32,6 @@
 // // }
 
 
-
 // const inputTitle = document.querySelector('.title__input--line');
 // const btnTitle = document.querySelector('.title__input--button');
 
@@ -160,13 +159,105 @@
 
 // //////////////////////////////////////////////////////////
 
+// ок, тогда теперь тебе нужно отрисовывать таски при добавлении - у тебя должен быть ul в html файле, в js нужно в функции добавления таски вызывать другую функцию render, в ней проходиться по массиву тасок ( с помощью метода массива) и на каждой итерации создавать шаблонную строку с <li>, складывать все li в одну строку с помощью конкатенации и потом эту строку вставлять в ul
 
+// const titleInput = document.querySelector('.title__input--line');
+// const titleButton = document.querySelector('.title__input--button');
+// // let newTask = document.querySelector('.task');
+// let titleNewTask = document.querySelector('.task__title');
+// let taskList = document.querySelector('.taskList');
+// // let blockList = document.createElement('li');
+// const Enter = 'Enter';
+
+
+// const enterPressPush = (e) => {
+//     if (e.code === Enter) {
+//         pushTaskInArray();
+//     }
+// };
+
+// // make render function for push new task in ul list
+
+
+
+// let taskArray = [];
+
+// const pushTaskInArray = () => {
+//     if (titleInput.value !== '') {
+//         let taskObject = {
+//             id: Date.now(),
+//             text: titleInput.value,
+//             isChecked: false,
+//         };
+//         taskArray.push(taskObject);
+//         console.log(taskArray);
+//         if (buttonPush !== false || keyEnterForPush !== false) {
+//             // titleNewTask.value = taskObject.text;
+//             // taskList.prepend(blockList);
+//             // taskBackground();
+//             render();
+//         };
+        
+//         // render();
+//     } else {
+//         alert('Задача не задана');  
+//     };
+// };
+
+// // const taskBackground = () => {
+// //     // let getLi = taskList.prepend(blockList);
+// //     // let getTaskInLi = blockList.prepend(newTask);
+// //     //  ???? .innerHTML()?????? ////!!!!!!!!!!!!!!!!!!!!!!!!
+// //     render();
+// //     titleInput.value = '';
+// //     console.log('11111');
+    
+    
+// // }; 
+
+// const render = () => {
+//     let newElement = '';
+//     taskArray.forEach( (taskObject) => {
+//         // titleNewTask = taskObject.text;
+//         newElement += `
+//         <li class="task" id="${taskObject.id}">
+//             <input type="checkbox" class="task__checkout" checked="${taskObject.isChecked}">
+//             <span class="task__title">${taskObject.text}</span>
+//             <div class="task__btn">
+//                 <button class="task__btn--done">Готово</button>
+//                 <button class="task__btn--todo">В процессе</button>
+//             </div>
+//         </li>`;
+//         console.log(newElement);
+//         // taskList.append(blockList);
+//         // blockList.append(newTask);
+//         console.log(taskObject);
+//     });
+//     taskList.innerHTML = newElement;
+//     titleInput.value = '';
+// };
+
+// const buttonPush = titleButton.addEventListener('click', pushTaskInArray);
+// const keyEnterForPush = document.addEventListener('keydown', enterPressPush);
+
+
+
+// 1- зачем там див?
+// 2- ты на каждой итерации для каждой таски создаешь span с id= task__title, а id должен быть уникальным, поменяй на класс
+// 3- как ты в массиве li будешь находить нужную? у нее должен быть id
+// 4- состояние isChecked нужно привязать к инпут чекбокс
 
 const titleInput = document.querySelector('.title__input--line');
 const titleButton = document.querySelector('.title__input--button');
-
+let titleNewTask = document.querySelector('.task__title');
+let taskList = document.querySelector('.taskList');
+const Enter = 'Enter';
+const enterPressPush = (e) => {
+    if (e.code === Enter) {
+        pushTaskInArray();
+    }
+};
 let taskArray = [];
-
 const pushTaskInArray = () => {
     if (titleInput.value !== '') {
         let taskObject = {
@@ -176,16 +267,44 @@ const pushTaskInArray = () => {
         };
         taskArray.push(taskObject);
         console.log(taskArray);
-        titleInput.value = '';
+        if (buttonPush !== false || keyEnterForPush !== false) {
+            render();
+        };
     } else {
         alert('Задача не задана');  
     };
 };
-
+const render = () => {
+    let newElement = '';
+    taskArray.forEach( (taskObject) => {
+        newElement += `
+        <li class="task" id="${taskObject.id}">
+            <input type="checkbox" class="task__checkout" ${taskObject.isChecked ? 'checked' : ''}>
+            <span class="task__title">${taskObject.text}</span>
+            <div class="task__btn">
+                <button class="task__btn--done">Готово</button>
+                <button class="task__btn--todo">В процессе</button>
+            </div>
+        </li>
+        `;
+        // console.log(newElement);
+        // console.log(taskObject);
+        // checked="${taskObject.isChecked}
+    });
+    taskList.innerHTML = newElement;
+    titleInput.value = '';
+};
 const buttonPush = titleButton.addEventListener('click', pushTaskInArray);
+const keyEnterForPush = document.addEventListener('keydown', enterPressPush);
 
 
+// Таска визуально состоит из чекбокса, текста и кнопки удаления, больше там ничего нет
 
+// Тебе нужно повесить клик на весь ul, при клике выяснять куда кликнуто и если кликнуто по кнопке, выяснять по кнопке какой li кликнуто (по id) и фильтровать массив, убирая id этой таски
 
+// Почитай про глобальный объект event
 
+// Законсоль его и потыкай содержимое
 
+// 15:25
+// Через него можно найти куда кликнуто
