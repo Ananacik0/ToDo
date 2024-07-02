@@ -88,14 +88,15 @@ body {
         }
 }
 
-.container > .task {
-        display: none;
-}
+
 
 .taskList {
         padding-top: 10vh;
-
-
+        display: flex;
+        flex-direction: column;
+        row-gap: 25px;
+        width: 100%;
+        
         .task {
                 display: flex;
                 flex-direction: row;
@@ -103,7 +104,7 @@ body {
                 background: #fff;
                 justify-content: space-between;
                 align-items: center;
-                max-width: 100%;
+                min-width: 90%;
                 margin: 0 auto;
                 border: 3px solid #bfbfbf;
                 border-radius: 15px;
