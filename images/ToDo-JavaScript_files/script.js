@@ -313,23 +313,19 @@ const convertCheckbox = (event) => {
     const eventId = event.target.parentElement;
     console.log(eventId.id);
     if (event.target.type === 'checkbox') {
-        console.log('check');
-    } else if (event.target.type === 'submit') {
-        // taskArray.forEach( elem => {
-        //     console.log(elem);
-        //     let stringElem = String(elem.id);
-        //     if (stringElem === eventId.id) {
-        //         console.log(taskArray);
-        //     } else {
-        //         console.log('bad');
-        //     };
+        console.log(eventId.id);
+        console.log('yes');
+    } else if (event.target.type === 'submit' || event.target.tagName === 'IMG') {
+        taskArray.forEach( elem => {
+            console.log(elem);
+            let stringElem = String(elem.id);
+            if (stringElem === eventId.id) {
+                console.log('nice');
+            } else {
+                console.log('bad');
+            };
             
-        // });
-        console.log('dfdf');
-        let taskArray = taskArray.filter( elem => elem.id !== eventId.id);
-        console.log(taskArray);
-        render();
-        
+        });
     };
 };
 
