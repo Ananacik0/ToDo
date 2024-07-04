@@ -265,7 +265,7 @@ const removeKey = 'KeyX';
 
 const deleteAllCheck = () => {
     console.log('fasfaf');
-    taskArray = taskArray.filter(elem => elem.isChecked = 'false')
+    taskArray = taskArray.filter(elem => elem.isChecked = 'false');
     console.log('asas');
         removeAll.checked = false;
     };
