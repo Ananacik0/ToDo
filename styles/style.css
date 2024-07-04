@@ -24,6 +24,7 @@ body {
 .container {
         max-width: 1100px;
         margin: 0 auto;
+        text-align: center;
         
         .title {
                 display: flex;
@@ -136,10 +137,74 @@ body {
                                                 background-color: rgb(152, 152, 0);
                                                 border-color: #ff0000;
                                         }
-
-                                        img {
-                                                width: 30px;
-                                        }
                                 }
                         }
                 }
+
+.state {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 50px 100px;
+        
+        button {
+                width: 200px;
+                padding: 10px 0;
+                border: 2px solid #ffae00;
+                border-radius: 10px;
+                background-color: #ffffffd3;
+                font-size: 20px;
+                font-weight: 700;
+                box-shadow: -12px 12px 20px #000000;
+                cursor: pointer;
+        }
+
+}
+.removeFull {
+        padding: 20px 100px;
+        font-size: 25px;
+        font-weight: 600;
+        text-transform: uppercase;
+        background: #ffffffa9;
+        border: 3px solid #ffffffa9;
+        border-radius: 20px;
+        margin: 0 auto;
+
+        &:hover {
+                background: #ffae00a1;
+                text-decoration: underline;
+                border-color: #000;
+                cursor: progress;
+                box-shadow: -12px 12px 20px #000000;
+                transition: 0.2s;
+        }
+}
+
+.allCheckbox {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        column-gap: 10px;
+        margin-top: 100px;
+        p {
+                font-size: 40px;
+                background-color: #ffae0098;
+                padding: 5px 20px;
+                font-weight: 600;
+                border: 3px solid #000;
+                border-radius: 10px;
+        }
+
+        input {
+                cursor: pointer;
+        }
+} 
+
+.allCheck {
+        width: 30px;
+        height: 30px;
+}
+
+                
