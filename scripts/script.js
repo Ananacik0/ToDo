@@ -159,7 +159,7 @@
 
 // //////////////////////////////////////////////////////////
 
-// ок, тогда теперь тебе нужно отрисовывать таски при добавлении - у тебя должен быть ul в html файле, в js нужно в функции добавления таски вызывать другую функцию render, в ней проходиться по массиву тасок ( с помощью метода массива) и на каждой итерации создавать шаблонную строку с <li>, складывать все li в одну строку с помощью конкатенации и потом эту строку вставлять в ul
+// ок, тогда теперь тебе нужно отрисовывать таски при добавлении - у тебя должен быть ul в html файле, в js нужно в функции добавления таски вызывать другую функцию render, в ней проходиться по массиву тасок ( с помощью метода массива) и на каждой итерации создавать шаблонную строку с <>, складывать все li в одну строку с помощью конкатенации и потом эту строку вставлять в ul
 
 // const titleInput = document.querySelector('.title__input--line');
 // const titleButton = document.querySelector('.title__input--button');
@@ -252,16 +252,57 @@ const titleButton = document.querySelector('.title__input--button');
 let titleNewTask = document.querySelector('.task__title');
 let taskList = document.querySelector('.taskList');
 let taskId = taskList.querySelector('.task');
+const removeAll = document.querySelector('.allCheck');
+const removeAllCheckTask = document.querySelector('.removeFull');
 
+const keyDel = 'Delete';
+const keyNumDel = 'NumpadDecimal';
 
 
 
 const enter = 'Enter';
 const removeKey = 'KeyX';
 
-const pressRemove = (e) => {
+const deleteAllCheck = () => {
+    console.log('fasfaf');
+    taskArray = taskArray.filter(elem => elem.isChecked = 'false')
+    console.log('asas');
+        removeAll.checked = false;
+    };
+
+
+const removeAllCheck = () => {
+    console.log('dgdg');
+    if (taskArray.length <= 0) {
+        removeAll.checked = false;
+        alert('Задача не задана')
+    } else {
+        taskArray.forEach( elem => {
+            elem.isChecked = removeAll.checked;
+            console.log(removeAll.checked);
+            console.log(elem);
+        });
+        // removeAll.checked = false;
+        render();
+        console.log('eyyeyye');
+        console.log(taskArray.length);
+    };
+};
+
+
+
+
+
+
+const pressRemoveAll = (e) => {
+    if (e.code === keyDel || e.code === keyNumDel) {
+        console.log('del');
+    };
+};
+
+const pressRemoveX = (e) => {
     if (e.code === removeKey) {
-        console.log('press x');
+        convertCheckbox();
     };
 };
 
@@ -293,7 +334,7 @@ const render = () => {
         <li class="task" id="${taskObject.id}">
             <input type="checkbox" class="task__checkout" ${taskObject.isChecked ? 'checked' : ''}>
             <span class="task__title">${taskObject.text}</span>
-            <button class="task__btn"><img src="images/remove-rubbish-svgrepo-com.svg" alt="remove"></button>
+            <button class="task__btn">&#10006;</button>
         </li>
         `;
         // console.log(newElement);
@@ -313,7 +354,35 @@ const convertCheckbox = (event) => {
     const eventId = event.target.parentElement;
     console.log(eventId.id);
     if (event.target.type === 'checkbox') {
-        console.log('check');
+        event.target.isChecked = !event.target.isChecked;
+        
+        // if (event.target.parentElement.id === event.target.parentElement.id) {
+
+        //     taskArray.forEach( elemen => elemen.isChecked = event.target.isChecked)
+        // };
+        taskArray.forEach( (elemen) => {
+            if (elemen.id === Number(event.target.parentElement.id)) {
+                elemen.isChecked = event.target.checked;
+                console.log(elemen.isChecked);
+                console.log('gfdfd');
+            } else {
+                console.log('1111');
+            };
+        });
+            console.log(taskArray);
+        
+        console.log(event.target.parentElement.id);
+        
+        
+        // taskArray = taskArray;
+        // event.target.isChecked 
+
+        // taskArray = taskArray.filter( () => event.isChecked = !event.isChecked);
+        console.log(event.target.isChecked);
+        console.log(event);
+        console.log(taskArray);
+
+        
     } else if (event.target.type === 'submit') {
         // taskArray.forEach( elem => {
         //     console.log(elem);
@@ -325,12 +394,14 @@ const convertCheckbox = (event) => {
         //     };
             
         // });
-        console.log('dfdf');
-        let taskArray = taskArray.filter( elem => elem.id !== eventId.id);
+        console.log(event);
+
+        taskArray = taskArray.filter( elem => String(elem.id) !== eventId.id);
         console.log(taskArray);
         render();
         
     };
+    return;
 };
 
 
@@ -346,10 +417,13 @@ const searchTask = (event) => {
 
 
 const keyEnterForPush = document.addEventListener('keydown', enterPressPush);
-const keyRemoveX = document.addEventListener('keydown', pressRemove);
+const keyRemoveDel = document.addEventListener('keydown', pressRemoveAll);
+const keyRemoveX = document.addEventListener('keydown', pressRemoveX)
 const buttonPush = titleButton.addEventListener('click', pushTaskInArray);
 const pressOnTask = taskList.addEventListener('click', searchTask);
 const buttonCheckbox = taskList.addEventListener('click', convertCheckbox);
+const buttonAllCheck = removeAll.addEventListener('click', removeAllCheck);
+const buttonAllRemove = removeAllCheckTask.addEventListener('click', deleteAllCheck)
 
 
 // Таска визуально состоит из чекбокса, текста и кнопки удаления, больше там ничего нет
