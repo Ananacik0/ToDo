@@ -9,7 +9,7 @@ const taskList = document.querySelector('.taskList');
 const taskId = taskList.querySelector('.task');
 const checkboxCheckAll = document.querySelector('.allCheck');
 const removeAllCheckTask = document.querySelector('.removeFull');
-// checkboxCheckAll == removeAll
+
 let taskArray = [];
 
 const deleteAllCheck = () => {
@@ -119,25 +119,32 @@ const convertCheckbox = (event) => {
         event.target.previousElementSibling.hidden = false;
         event.target.previousElementSibling.focus();
     };
+    event.target.previousElementSibling.addEventListener('blur', () => {
+        render();
+    });
     ///////////////////////////////////////////////////
 };
 
 const saveTitleTask = (e) => {
     // removeEventListener('keydown', enterPressPush);
     if (e.code === ENTER) {
-      console.log(e)
-      taskArray.forEach(task => {
-        if(task.id == e.target.parentElement.id){
-          task.text = e.target.value
-        }
-      })
+        console.log(e);
+        taskArray.forEach(task => {
+            if (task.id === Number(e.target.parentElement.id)) {
+                task.text = e.target.value;
+            };
+        });
         render();
     };
     if (e.code === ESC) {
         console.log('esc');
         render();
     };
-}; 
+};
+
+// event.target.previousElementSibling.addEventListener('blur', () => {
+//     render();
+// });
 
 // const searchTask = (event) => {
 //     console.log(event.srcElement);
@@ -154,3 +161,4 @@ const buttonPush = titleButton.addEventListener('click', pushTaskInArray);
 const buttonCheckbox = taskList.addEventListener('click', convertCheckbox);
 const buttonAllCheck = checkboxCheckAll.addEventListener('click', removeAllCheck);
 const buttonAllRemove = removeAllCheckTask.addEventListener('click', deleteAllCheck);
+
