@@ -1,7 +1,7 @@
-;const KEYDEL = 'Delete';
+const KEYDEL = 'Delete';
 const ENTER = 'Enter';
 const ESC = 'Escape'
-
+const taskOnPage = 5;
 const titleInput = document.querySelector('.title__input--line');
 const titleButton = document.querySelector('.title__input--button');
 const titleNewTask = document.querySelector('.task__title');
@@ -15,7 +15,7 @@ const page = document.querySelector('#page');
 
 let taskArray = [];
 let filterType = 'all';
-const taskOnPage = 5;
+
 
 const deleteAllCheck = () => {
     taskArray = taskArray.filter(elem => !elem.isChecked);
@@ -67,11 +67,13 @@ const pushTaskInArray = () => {
 
 
 const render = () => {
-    checkboxCheckAll.checked = false;
-    let filterAllTask = filterArray();
+  checkboxCheckAll.checked = false;
+  let sliceArray = sliceList();
+
+  let filterAllTask = filterArray();
     checkAllCheckbox();
     let newElement = '';
-    filterAllTask.forEach( (taskObject) => {
+    sliceArray.forEach( (taskObject) => {
         newElement += `
         <li class="task" id="${taskObject.id}">
             <input type="checkbox" class="task__checkout" ${taskObject.isChecked ? 'checked' : ''} maxlength="255">
@@ -88,6 +90,7 @@ const render = () => {
     activeTask();
     completedTask();
     // pageForTask();
+    // paginationView(taskArray, taskOnPage);
     ////////
 };
 ////////
@@ -246,17 +249,54 @@ let currentPage = 1;
 // };
 
 
-const paginationList = (taskArray, pages, currentPage) => {
-    const startElement = pages * currentPage;
-    const endElement = startElement + pages;
-    const paginationTasks = taskArray.slice(startElement, endElement);
+const sliceList = (elementArray, taskOnPage, currentPage) => {
+    const endElement = taskOnPage * currentPage;
+    const startElement = endElement - taskOnPage;
+    const paginationTasks = elementArray.slice(startElement, endElement);
+    // console.log(startElement);
+    // console.log(endElement);
+    let filterAllTask = filterArray();
+    filterAllTask.forEach();
     paginationTasks.forEach( element => {
-        const taskElement = page.innerHTML;
-        taskElement = `<li>${list}</li>`
+      console.log(element);
+      return (paginationTasks);
     });
+    paginationView();
 };
-const paginationButton = () => {};
 
+const paginationView = (arrayForList, taskOnPage) => {
+  const pageCounter = Math.ceil(arrayForList.length / taskOnPage);
+  
+  console.log(pageCounter);
+  console.log(arrayForList);
+  console.log(taskOnPage);
+  page.innerHTML = '';
+  for (let i = 0; i < pageCounter; i++) {
+    console.log(i);
+    // let pagePlus = pageCounter;sdf
+    console.log(pageCounter);
+    // return pagePlus;
+    // if (i < pageCounter) {
+    // pageCounter = ;
+      // let pageList = `<button>${pageCounter}</button>`
+      let pageList = `<button>${i + 1}</button>`;
+      // if (taskArray.length <= 0) {
+        //   page.childNodes = '';
+        // };
+        
+        // };
+        // page.innerHTML = pageList;
+        page.innerHTML = page.innerHTML + pageList;
+      };
+      // taskList = 
+};
+
+
+// const paginationButton = (page) => {
+//   page.innerHTML= `<button>${pages}</button>`
+//   console.log(pages);
+//   return pages;
+// };
 
 const stateCheck = states.addEventListener('click', checkElementState);
 const keyEnterForPush = titleInput.addEventListener('keydown', enterPressPush);
@@ -268,4 +308,4 @@ const buttonAllCheck = checkboxCheckAll.addEventListener('click', removeAllCheck
 const buttonAllRemove = removeAllCheckTask.addEventListener('click', deleteAllCheck);
 const blurInput = taskList.addEventListener('blur', blurElement, true);
 // const asasas = page.addEventListener('click', checkPage);
-const asasas = page.addEventListener('click', sliceArray);
+// const asasas = page.addEventListener('click', sliceArray);

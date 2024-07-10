@@ -212,11 +212,11 @@ body {
         justify-content: center;
         column-gap: 10px;
 
-        li {
+        button {
                 display: block;
                 border: 2px solid #666666;
                 color: #666666;
-                padding: 5px 3px;
+                padding: 3px 8px;
                 border-radius: 5px;
                 font-size: 20px;
 
@@ -226,6 +226,7 @@ body {
                         background: #000;
                         transition: 0.2s;
                         cursor: pointer;
+                        box-shadow: -12px 12px 15px #000000;
                 }
         }
 }
