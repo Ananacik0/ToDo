@@ -5,11 +5,11 @@ const TASK_ON_PAGE = 5
 
 const titleInput = document.querySelector('.title__input--line');
 const titlePush = document.querySelector('.title__input--button');
-const taskList = document.querySelector('.taskList');
+const taskList = document.querySelector('.task__list');
 const task = taskList.querySelector('.task');
 const taskTitle = document.querySelector('.task__title');
 const pageList = document.querySelector('#pages');
-const checkboxAll = document.querySelector('.allCheck');
+const checkboxAll = document.querySelector('.all__сheck');
 const taskState = document.querySelector('.state');
 const removeCompleted = document.querySelector('.remove__completed');
 const pages = document.querySelector('#pages');
