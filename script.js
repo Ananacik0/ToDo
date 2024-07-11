@@ -21,9 +21,10 @@ let numberPage = 1;
 
 const clickPushTask = () => {
   if (titleInput.value !== '') {
-    titleInput.value = titleInput.value.replace(/<\\?[^>]+(>|$)/g, '');
+    let replaceTitle = titleInput.value.replace(/<\\?[^>]+(>|$)/g, '')
+    // titleInput.value = titleInput.value.replace(/<\\?[^>]+(>|$)/g, '');
     let objectTask = {
-      text: titleInput.value,
+      text: replaceTitle,
       id: Date.now(),
       isCheck: false,
     };
