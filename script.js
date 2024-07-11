@@ -39,7 +39,7 @@ const clickPushTask = () => {
     console.log(taskArray);
     titleInput.value = '';
   } else {
-    alert('Not task')
+    console.log('not task');
   };
   render();
 };
@@ -59,7 +59,11 @@ const buttonTitleTask = (event) => {
   if (event.code === ENTER) {
     taskArray.forEach( element => {
       if (element.id === Number(event.target.parentElement.id)) {
-        element.text = event.target.value;
+        if (event.target.value !== '') {
+          element.text = event.target.value;
+        } else {
+          render()
+        };
       };
     });
   };
