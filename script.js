@@ -38,6 +38,8 @@ const clickPushTask = () => {
 
     console.log(taskArray);
     titleInput.value = '';
+  } else {
+    alert('Not task')
   };
   render();
 };
