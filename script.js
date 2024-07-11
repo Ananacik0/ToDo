@@ -11,7 +11,7 @@ const taskTitle = document.querySelector('.task__title');
 const pageList = document.querySelector('#pages');
 const checkboxAll = document.querySelector('.allCheck');
 const taskState = document.querySelector('.state');
-const removeCompleted = document.querySelector('.removeFull');
+const removeCompleted = document.querySelector('.remove__completed');
 const pages = document.querySelector('#pages');
 
 
@@ -21,7 +21,7 @@ let numberPage = 1;
 
 const clickPushTask = () => {
   if (titleInput.value !== '') {
-    // titleInput.value.replace(/<\\?[^>]+(>|$)/g, '');
+    titleInput.value = titleInput.value.replace(/<\\?[^>]+(>|$)/g, '');
     let objectTask = {
       text: titleInput.value,
       id: Date.now(),
