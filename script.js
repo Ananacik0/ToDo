@@ -22,7 +22,7 @@ let numberPage = 1;
 const clickPushTask = () => {
   if (titleInput.value !== '') {
     let replaceTitle = titleInput.value.replace(/<\\?[^>]+(>|$)/g, '')
-    // titleInput.value = titleInput.value.replace(/<\\?[^>]+(>|$)/g, '');
+    
     let objectTask = {
       text: replaceTitle,
       id: Date.now(),
@@ -124,7 +124,7 @@ const deleteAllCompleted = () => {
 
 
 const arrayFilter = () => {
-  // typeFilter = event.target.id;
+
   if (typeFilter === 'all') {
     return taskArray;
   };
@@ -216,11 +216,7 @@ const sliceList = () => {
   const endElement = TASK_ON_PAGE * numberPage;
   const startElement = endElement - TASK_ON_PAGE;
   const paginationTasks = arrayFilter().slice(startElement, endElement);
-  
-  // let filterAllTask = arrayFilter();
-  // console.log(filterAllTask);
-  // filterAllTask.forEach(() => {
-  // });
+ 
   paginationTasks.forEach( element => {
     paginationView();
     
@@ -254,8 +250,7 @@ const pressPageButton = (event) => {
 
 
 const render = () => { 
-  // let filterState = arrayFilter();
-  // arrayFilter();
+
   if (taskArray.length === 0) {
     pages.innerHTML = '';
   };
@@ -285,9 +280,7 @@ const render = () => {
   activeLength();
   completedLength();
   
-  // paginationView();
-  // checkElementState();
-  
+
 };
 
 
